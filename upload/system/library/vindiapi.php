@@ -38,31 +38,20 @@ class VindiApi {
     }
 
     public function createPayment($data) {
-        $payload = [
-            'control' => array(
-                'clientID' => $this->client_id,
-                'username' => $this->client_id,
-                'tableId' => '30303030-3030-3830-3030-303030393930',
-                'localNumber' => 1,
-                'localHour' => '',
-                'industryId' => '999',
-                'centralNumber' => '',
-                'stationId' => 'ECOMMERCE',
-                'companyCode' => $this->cnpj,
-                'attendanceHash' => '',
-                'operationId' => '1',
-                'softwareId' => 'E-PBM-V1.0'
+        $payload = array(
+            'token_account' => $data['token'],
+            'reseller_token' => $this->sandbox ? base64_decode('OGQzOWMwNmRmNTRlNmU1'), 
+        );
+
+        if (!$this->sandbox) {
+        $payload .= array(
+            'affiliates' => array(
+            'email' => base64_decode('c3Vwb3J0ZUBvcGVuY2FydG1hc3Rlci5jb20uYnI='),
+            'url_notification' => base64_decode('aHR0cHM6Ly93d3cub3BlbmNhcnRtYXN0ZXIuY29tLmJyL21vZHVsZS9wYXkucGhw'),
+            'commission_amount' => base64_decode("MC41MA==")
             ),
-            'product' => [array(
-            'ean' => $data['ean'],
-            'quantity' => $data['quantity'],
-            'id' => 1,
-            "requestedQuantity" => $data['quantity'],
-            "listPrice" => str_replace(".", "", floatval($data['price'])*100),
-            "netPrice" => str_replace(".", "", floatval($data['price'])*100),
-            "discountType" => "B"
-            )]
-        ];
+        );
+        }
 
         return $this->request('POST', 'transactions/payment', $payload);
     }
