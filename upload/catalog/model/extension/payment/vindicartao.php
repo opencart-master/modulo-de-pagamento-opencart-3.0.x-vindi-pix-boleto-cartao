@@ -1,13 +1,13 @@
 <?php
-class ModelExtensionPaymentYapayc extends Model {
+class ModelExtensionPaymentVindicartao extends Model {
 	public function getMethod($address, $total) {
-		$this->load->language('extension/payment/yapayc');
+		$this->load->language('extension/payment/vindicartao');
 
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$this->config->get('payment_yapayc_geo_zone_id') . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$this->config->get('payment_vindicartao_geo_zone_id') . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
 
-		if ($this->config->get('payment_yapayc_total') > 0 && $this->config->get('payment_yapayc_total') > $total) {
+		if ($this->config->get('payment_vindicartao_total') > 0 && $this->config->get('payment_vindicartao_total') > $total) {
 			$status = false;
-		} elseif (!$this->config->get('payment_yapayc_geo_zone_id')) {
+		} elseif (!$this->config->get('payment_vindicartao_geo_zone_id')) {
 			$status = true;
 		} elseif ($query->num_rows) {
 			$status = true;
@@ -19,10 +19,10 @@ class ModelExtensionPaymentYapayc extends Model {
 
 		if ($status) {
 			$method_data = array(
-				'code'       => 'yapayc',
-				'title'      => $this->config->get('payment_yapayc_title'),
+				'code'       => 'vindicartao',
+				'title'      => $this->config->get('payment_vindicartao_title'),
 				'terms'      => '',
-				'sort_order' => $this->config->get('payment_yapayc_sort_order')
+				'sort_order' => $this->config->get('payment_vindicartao_sort_order')
 			);
 		}
 

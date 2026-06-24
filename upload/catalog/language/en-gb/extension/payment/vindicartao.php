@@ -1,7 +1,7 @@
 <?php
 // Text
-$_['text_title'] = 'Cartão de Crédito - YaPay';
-$_['text_credit_card'] = '<img src="image/catalog/banner-pay-yapay.png" alt="Yapay Pagamentos" class="img-responsive static-banner xs-100 sm-100" />';
+$_['text_title'] = 'Cartão de Crédito';
+$_['text_credit_card'] = '<img src="image/catalog/banner-pay-vindi.png" alt="Vindi Pagamentos" class="img-responsive static-banner xs-100 sm-100" />';
 
 //Entry
 $_['entry_cc_type']       = 'Escolha a Bandeira';

@@ -85,7 +85,7 @@
 <script type="text/javascript"><!--
 $('#button-confirm').on('click', function() {
 	$.ajax({
-		url: 'index.php?route=extension/payment/yapayc/confirm',
+		url: 'index.php?route=extension/payment/vindicartao/confirm',
 		type: 'post',
 		data: $("#form-pay").serialize(),
 		dataType: 'json',
@@ -139,7 +139,7 @@ $('#button-confirm').on('click', function() {
 <script type="text/javascript"><!--
 $('select[name=\'cc_bandeira\']').on('change', function() {
 	$.ajax({
-		url: 'index.php?route=extension/payment/yapayc/parcela&bandeira_id=' + this.value,
+		url: 'index.php?route=extension/payment/vindicartao/parcela&bandeira_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
 			$('select[name=\'cc_bandeira\']').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');

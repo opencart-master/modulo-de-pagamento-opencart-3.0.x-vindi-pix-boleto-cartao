@@ -1,3 +1,3 @@
 <?php
 // Text
-$_['text_title'] = 'Pix YaPay';
+$_['text_title'] = 'Pix';
