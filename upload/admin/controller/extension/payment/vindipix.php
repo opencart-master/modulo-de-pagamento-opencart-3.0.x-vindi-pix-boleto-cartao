@@ -59,6 +59,7 @@ class ControllerExtensionPaymentvindipix extends Controller {
 		$data['module_name'] = "Vindi Pagamentos";
 
 		$data['atual'] = $this->vindi->checkUpdate();
+		$data['version'] = $this->vindi->moduleVersion();
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];

@@ -122,6 +122,10 @@ class VindiApi {
         return $this->sandbox;
     }
 
+    public function moduleVersion() {
+        return $this->version_module;
+    }
+
     public function onlyNumbe($numeber) {
         return preg_replace("/[^0-9]/", '', $numeber);
     }
