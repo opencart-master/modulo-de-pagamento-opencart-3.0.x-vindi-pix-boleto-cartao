@@ -1,5 +1,5 @@
 <?php
-class ControllerExtensionPaymentYapayp extends Controller {
+class ControllerExtensionPaymentVindipix extends Controller {
 	public function index() {
 		$data['button_confirm'] = $this->language->get('button_confirm');
 
@@ -7,13 +7,13 @@ class ControllerExtensionPaymentYapayp extends Controller {
 
 		$data['continue'] = $this->url->link('checkout/success');
 
-		return $this->load->view('extension/payment/yapayp', $data);
+		return $this->load->view('extension/payment/vindipix', $data);
 	}
 
 	public function confirm() {
 	    $json = array(); 
-		if ($this->session->data['payment_method']['code'] == 'yapayp') {
-        include_once('yapaypcode.php');
+		if ($this->session->data['payment_method']['code'] == 'vindipix') {
+        include_once('vindipixcode.php');
 	    }
 		
 		$this->response->addHeader('Content-Type: application/json');
@@ -22,7 +22,7 @@ class ControllerExtensionPaymentYapayp extends Controller {
 	
 	public function getPix($json_convert) {
 	    
-	if ($this->config->get('payment_yapayp_type') == 0) {
+	if ($this->config->get('payment_vindipix_type') == 0) {
 			$url = "https://api.intermediador.sandbox.yapay.com.br/api/v3/transactions/payment";    
 			} else {
 			$url = "https://api.intermediador.yapay.com.br/api/v3/transactions/payment";     
@@ -61,29 +61,29 @@ class ControllerExtensionPaymentYapayp extends Controller {
 	        $this->load->model('checkout/order');
 			$order_info = $this->model_checkout_order->getOrder($oid);
 			
-			if ($order_info && $this->request->post['token_transaction'] && $this->request->post['transaction']['transaction_id'] && $order_info['payment_code'] == 'yapayp') {
+			if ($order_info && $this->request->post['token_transaction'] && $this->request->post['transaction']['transaction_id'] && $order_info['payment_code'] == 'vindipix') {
 			    
 		        $order_status_ids = $order_info['order_status_id'];
-				$order_status_id = $this->config->get('payment_yapayp_order_status_id');
+				$order_status_id = $this->config->get('payment_vindipix_order_status_id');
 
 				switch($this->request->post['transaction']['status_id']) {
 					case '4':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id');
 						break;
 					case '6':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id2');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id2');
 						break;
 					case '7':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id1');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id1');
 						break;
 					case '24':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id3');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id3');
 						break;
 					case '87':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id');
 						break;
 					case '89':
-						$order_status_id = $this->config->get('payment_yapayp_order_status_id1');
+						$order_status_id = $this->config->get('payment_vindipix_order_status_id1');
 						break;
 				}
 				
