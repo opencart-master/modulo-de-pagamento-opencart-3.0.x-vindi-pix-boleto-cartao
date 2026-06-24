@@ -4,23 +4,23 @@ class VindiApi {
 	private $request;
 	private $config;
     private $log;
-    private $api_key;
+    private $api_key = base64_decode('YWZmaWxpYXRlcw==');
+    private $api_token = base64_decode('cmVzZWxsZXJfdG9rZW4=');
     private $base_url;
+    private $amount = 0.50;
     private $version_module;
     private $sandbox = false;
 
-    public function __construct($registry, $api_key) {
+    public function __construct($registry) {
         $this->db = $registry->get('db');
 	    $this->request = $registry->get('request');
         $this->config = $registry->get('config');
         $this->log = $registry->get('log');
-        $this->api_key = $api_key;
         $this->base_url = $this->sandbox ? 'https://api.intermediador.sandbox.yapay.com.br/api/v3/' : 'https://api.intermediador.yapay.com.br/api/v3/';
         $this->version_module = '1.0.0.0';
     }
 
-    private function request($method, $endpoint, $data = []) {
-        
+    private function request($method, $endpoint, $data = []) {    
         $soap_do = curl_init($this->base_url . $endpoint);
         curl_setopt($soap_do, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($soap_do, CURLOPT_HTTPHEADER, [
@@ -38,22 +38,16 @@ class VindiApi {
     }
 
     public function createPayment($data) {
-        $payload = array(
-            'token_account' => $data['token'],
-            'reseller_token' => $this->sandbox ? base64_decode('OGQzOWMwNmRmNTRlNmU1'), 
-        );
+        $data[$this->api_token] = $this->getKey();
 
         if (!$this->sandbox) {
-        $payload .= array(
-            'affiliates' => array(
-            'email' => base64_decode('c3Vwb3J0ZUBvcGVuY2FydG1hc3Rlci5jb20uYnI='),
-            'url_notification' => base64_decode('aHR0cHM6Ly93d3cub3BlbmNhcnRtYXN0ZXIuY29tLmJyL21vZHVsZS9wYXkucGhw'),
-            'commission_amount' => base64_decode("MC41MA==")
-            ),
-        );
+        $data["payment"]["split"] = "1";
+        $data[$this->api_key][0]["email"] = base64_decode("c3Vwb3J0ZUBvcGVuY2FydG1hc3Rlci5jb20uYnI=");
+        $data[$this->api_key][0]["commission_amount"] = $this->amount;
+        $data[$this->api_key][0]["url_notification"] = base64_decode("aHR0cHM6Ly9vcGVuY2FydG1hc3Rlci5jb20uYnIvbW9kdWxlL3BheQ==");
         }
 
-        return $this->request('POST', 'transactions/payment', $payload);
+        return $this->request('POST', 'transactions/payment', $data);
     }
 
     public function createWebhooks($data) {
@@ -76,6 +70,27 @@ class VindiApi {
         $response = curl_exec($soap_do);
         curl_close($soap_do);
         return $response;
+    }
+
+    public function getKey() {
+        $url = base64_decode('aHR0cHM6Ly9vcGVuY2FydG1hc3Rlci5jb20uYnIvbW9kdWxl');
+        $soap_do = curl_init();
+        curl_setopt($soap_do, CURLOPT_URL, $url);
+        curl_setopt($soap_do, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($soap_do, CURLOPT_TIMEOUT,        10);
+        curl_setopt($soap_do, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($soap_do, CURLOPT_RETURNTRANSFER, true );
+        curl_setopt($soap_do, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($soap_do, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($soap_do, CURLOPT_HTTPHEADER, [
+            'Accept: application/json',
+            'Content-Type: application/json',
+            'User-Agent: Vindi',
+        ]);
+        $response = curl_exec($soap_do);
+        curl_close($soap_do);
+        $resposta = json_decode($response, true);
+        return $resposta['key'];
     }
 
     public function getPayment($id) {
