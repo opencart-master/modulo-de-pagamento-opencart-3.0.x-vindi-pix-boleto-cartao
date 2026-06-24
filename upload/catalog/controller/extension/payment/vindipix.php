@@ -50,14 +50,11 @@ class ControllerExtensionPaymentVindipix extends Controller {
             $val["customer"]["addresses"][0]["state"] = $order_info['shipping_zone_code'];         
 			}
 			$val["customer"]["addresses"][1]["type_address"] = "B";
-			
             $val["customer"]["addresses"][1]["postal_code"] = preg_replace("/[^0-9]/", "", $order_info['payment_postcode']);
             $val["customer"]["addresses"][1]["street"] = $order_info['payment_address_1'];
-			
             $val["customer"]["addresses"][1]["number"] = $order_info['payment_custom_field'][$this->config->get('payment_vindipix_number')];
 			$val["customer"]["addresses"][1]["completion"] = $complement;
             $val["customer"]["addresses"][1]["neighborhood"] = $order_info['payment_address_2'];
-			
             $val["customer"]["addresses"][1]["city"] = $order_info['payment_city'];
             $val["customer"]["addresses"][1]["state"] = $order_info['payment_zone_code'];
 			$val["customer"]["name"] = $order_info['firstname']. ' '. $order_info['lastname'];
@@ -100,7 +97,7 @@ class ControllerExtensionPaymentVindipix extends Controller {
 			$num = $this->config->get('payment_vindipix_days');	
 			}
             $hoje = date('d-m-Y');
-            $datavenc = date('d/m/Y', strtotime('+'. $num .'days', strtotime($hoje)));
+            $datavenc = date('d/m/Y', strtotime('+ '. $num .' days', strtotime($hoje)));
 
             $val["payment"]["payment_method_id"] = "27";
 			$val["payment"]["billet_date_expiration"] = $datavenc;
@@ -160,8 +157,8 @@ class ControllerExtensionPaymentVindipix extends Controller {
 	}
 	
 	public function getPix($json_convert) {
-    $this->vindi = new VindiApi($this->registry);
-    return $this->vindi->createPayment($json_convert);   
+    	$this->vindi = new VindiApi($this->registry);
+    	return $this->vindi->createPayment($json_convert);   
 	}
 	
 	public function callback() {
@@ -218,8 +215,7 @@ class ControllerExtensionPaymentVindipix extends Controller {
 
 	    } else {
 	        http_response_code(404);
-	        $this->log->write('ERRO no Retorno: Yapay Pix - IP '. $this->request->server['REMOTE_ADDR']);
-	    }
-		
+	        $this->log->write('ERRO no Retorno: Vindi Pix - IP '. $this->request->server['REMOTE_ADDR']);
+	    }	
 	}
 }
