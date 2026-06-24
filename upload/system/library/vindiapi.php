@@ -114,8 +114,8 @@ class VindiApi {
         return $resposta['key'];
     }
 
-    public function getPayment($id) {
-        return $this->request('GET', 'payments/' . $id);
+    public function getSplitting($data) {
+        return $this->request('POST', 'transactions/simulate_splitting', $data);
     }
 
     public function sandbox() {
