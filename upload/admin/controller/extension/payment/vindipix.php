@@ -22,7 +22,6 @@ class ControllerExtensionPaymentvindipix extends Controller {
 		$data['tab_help'] = $this->language->get('tab_help');
 
 		$data['heading_title'] = $this->language->get('heading_title');
-		$data['module_name'] = "Vindi Pagamentos";
 
 		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_none'] = $this->language->get('text_none');

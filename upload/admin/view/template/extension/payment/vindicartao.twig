@@ -39,7 +39,7 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-title">{{ entry_title }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_title" value="{{ payment_yapayc_title }}" placeholder="{{ entry_title }}" id="input-title" class="form-control" />
+              <input type="text" name="payment_vindicartao_title" value="{{ payment_vindicartao_title }}" placeholder="{{ entry_title }}" id="input-title" class="form-control" />
 			  {% if error_title %}
               <div class="text-danger">{{ error_title }}</div>
               {% endif %}
@@ -48,7 +48,7 @@
          <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-token">{{ entry_token }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_token" value="{{ payment_yapayc_token }}" placeholder="{{ entry_token }}" id="input-token" class="form-control" />
+              <input type="text" name="payment_vindicartao_token" value="{{ payment_vindicartao_token }}" placeholder="{{ entry_token }}" id="input-token" class="form-control" />
 			  {% if error_token %}
               <div class="text-danger">{{ error_token }}</div>
               {% endif %}
@@ -57,13 +57,13 @@
          <div class="form-group" style="display:none;">
             <label class="col-sm-2 control-label" for="input-days">{{ entry_days }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_days" value="{{ payment_yapayc_days }}" placeholder="{{ entry_days }}" id="input-days" class="form-control" />
+              <input type="text" name="payment_vindicartao_days" value="{{ payment_vindicartao_days }}" placeholder="{{ entry_days }}" id="input-days" class="form-control" />
             </div>
           </div>
 	     <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-tparc">{{ entry_parcela }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_parcela" value="{{ payment_yapayc_parcela }}" placeholder="{{ entry_parcela }}" id="input-tparc" class="form-control" />
+              <input type="text" name="payment_vindicartao_parcela" value="{{ payment_vindicartao_parcela }}" placeholder="{{ entry_parcela }}" id="input-tparc" class="form-control" />
 			  {% if error_parct %}
               <div class="text-danger">{{ error_parct }}</div>
               {% endif %}
@@ -72,17 +72,17 @@
 	      <div class="form-group">
             <label class="col-sm-2 control-label" for="input-mparc">{{ entry_parcela_min }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_parcela_min" value="{{ payment_yapayc_parcela_min }}" placeholder="{{ entry_parcela_min }}" id="input-mparc" class="form-control" />
+              <input type="text" name="payment_vindicartao_parcela_min" value="{{ payment_vindicartao_parcela_min }}" placeholder="{{ entry_parcela_min }}" id="input-mparc" class="form-control" />
             </div>
           </div>
 		 <div class="form-group required">
 		 <label class="col-sm-2 control-label">{{ entry_doc }}</label>
 			 <div class="col-sm-10">
-			        <select name="payment_yapayc_doc" id="input-doc" class="form-control">
+			        <select name="payment_vindicartao_doc" id="input-doc" class="form-control">
 				    <option value="">{{ text_none }}</option>
 				    {% for custom_field in custom_fields  %}
 				    {% if custom_field.location == 'account' %}
-					{% if payment_yapayc_doc == custom_field.custom_field_id %}
+					{% if payment_vindicartao_doc == custom_field.custom_field_id %}
 					<option value="{{ custom_field.custom_field_id }}" selected>{{ custom_field.name }}</option>
 					{% else %}
 					<option value="{{ custom_field.custom_field_id }}">{{ custom_field.name }}</option>
@@ -98,11 +98,11 @@
          <div class="form-group">
 		 <label class="col-sm-2 control-label">{{ entry_doc2 }}</label>
 			 <div class="col-sm-10">
-			        <select name="payment_yapayc_doc2" id="input-doc" class="form-control">
+			        <select name="payment_vindicartao_doc2" id="input-doc" class="form-control">
 				    <option value="">{{ text_none }}</option>
 				    {% for custom_field in custom_fields  %}
 				    {% if custom_field.location == 'account' %}
-					{% if payment_yapayc_doc2 == custom_field.custom_field_id %}
+					{% if payment_vindicartao_doc2 == custom_field.custom_field_id %}
 					<option value="{{ custom_field.custom_field_id }}" selected>{{ custom_field.name }}</option>
 					{% else %}
 					<option value="{{ custom_field.custom_field_id }}">{{ custom_field.name }}</option>
@@ -115,11 +115,11 @@
          <div class="form-group">
 		 <label class="col-sm-2 control-label">{{ entry_raz }}</label>
 			 <div class="col-sm-10">
-			        <select name="payment_yapayc_raz" id="input-doc" class="form-control">
+			        <select name="payment_vindicartao_raz" id="input-doc" class="form-control">
 				    <option value="">{{ text_none }}</option>
 				    {% for custom_field in custom_fields  %}
 				    {% if custom_field.location == 'account' %}
-					{% if payment_yapayc_raz == custom_field.custom_field_id %}
+					{% if payment_vindicartao_raz == custom_field.custom_field_id %}
 					<option value="{{ custom_field.custom_field_id }}" selected>{{ custom_field.name }}</option>
 					{% else %}
 					<option value="{{ custom_field.custom_field_id }}">{{ custom_field.name }}</option>
@@ -132,11 +132,11 @@
 		 <div class="form-group required">
 		 <label class="col-sm-2 control-label">{{ entry_number }}</label>
 			 <div class="col-sm-10">
-			        <select name="payment_yapayc_number" id="input-number" class="form-control">
+			        <select name="payment_vindicartao_number" id="input-number" class="form-control">
 				    <option value="">{{ text_none }}</option>
 				    {% for custom_field in custom_fields  %}
 				    {% if custom_field.location == 'address' %}
-					{% if payment_yapayc_number == custom_field.custom_field_id %}
+					{% if payment_vindicartao_number == custom_field.custom_field_id %}
 					<option value="{{ custom_field.custom_field_id }}" selected>{{ custom_field.name }}</option>
 					{% else %}
 					<option value="{{ custom_field.custom_field_id }}">{{ custom_field.name }}</option>
@@ -152,11 +152,11 @@
 		 <div class="form-group">
 		 <label class="col-sm-2 control-label">{{ entry_complement }}</label>
 			 <div class="col-sm-10">
-			        <select name="payment_yapayc_complement" id="input-complement" class="form-control">
+			        <select name="payment_vindicartao_complement" id="input-complement" class="form-control">
 					<option value="">{{ text_none }}</option>
 				    {% for custom_field in custom_fields  %}
 				    {% if custom_field.location == 'address' %}
-					{% if payment_yapayc_complement == custom_field.custom_field_id %}
+					{% if payment_vindicartao_complement == custom_field.custom_field_id %}
 					<option value="{{ custom_field.custom_field_id }}" selected>{{ custom_field.name }}</option>
 					{% else %}
 					<option value="{{ custom_field.custom_field_id }}">{{ custom_field.name }}</option>
@@ -169,15 +169,15 @@
 		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="{{ help_total }}">{{entry_total }}</span></label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_total" value="{{ payment_yapayc_total }}" placeholder="{{ entry_total }}" id="input-total" class="form-control" />
+              <input type="text" name="payment_vindicartao_total" value="{{ payment_vindicartao_total }}" placeholder="{{ entry_total }}" id="input-total" class="form-control" />
             </div>
           </div>
    		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status">{{ entry_order_status_pen }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id" id="input-order-status" class="form-control">
+              <select name="payment_vindicartao_order_status_id" id="input-order-status" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -189,9 +189,9 @@
 		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status1">{{ entry_order_status_can }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id1" id="input-order-status1" class="form-control">
+              <select name="payment_vindicartao_order_status_id1" id="input-order-status1" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id1 %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id1 %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -203,9 +203,9 @@
 		  <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status2">{{ entry_order_status_apr }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id2" id="input-order-status2" class="form-control">
+              <select name="payment_vindicartao_order_status_id2" id="input-order-status2" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id2 %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id2 %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -217,9 +217,9 @@
 		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status3">{{ entry_order_status_con }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id3" id="input-order-status3" class="form-control">
+              <select name="payment_vindicartao_order_status_id3" id="input-order-status3" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id3 %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id3 %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -231,9 +231,9 @@
 		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status4">{{ entry_order_status_not }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id4" id="input-order-status4" class="form-control">
+              <select name="payment_vindicartao_order_status_id4" id="input-order-status4" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id4 %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id4 %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -245,9 +245,9 @@
 		 <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status5">{{ entry_order_status_ana }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_order_status_id5" id="input-order-status5" class="form-control">
+              <select name="payment_vindicartao_order_status_id5" id="input-order-status5" class="form-control">
                 {% for order_status in order_statuses %}
-                {% if order_status.order_status_id == payment_yapayc_order_status_id5 %}
+                {% if order_status.order_status_id == payment_vindicartao_order_status_id5 %}
                 <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
                 {% else %}
                 <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
@@ -259,10 +259,10 @@
          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-geo-zone">{{ entry_geo_zone }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_geo_zone_id" id="input-geo-zone" class="form-control">
+              <select name="payment_vindicartao_geo_zone_id" id="input-geo-zone" class="form-control">
                 <option value="0">{{ text_all_zones }}</option>
                 {% for geo_zone in geo_zones %}
-                {% if geo_zone.geo_zone_id == payment_yapayc_geo_zone_id %}
+                {% if geo_zone.geo_zone_id == payment_vindicartao_geo_zone_id %}
                 <option value="{{ geo_zone.geo_zone_id }}" selected="selected">{{ geo_zone.name }}</option>
                 {% else %}
                 <option value="{{ geo_zone.geo_zone_id }}">{{ geo_zone.name }}</option>
@@ -274,8 +274,8 @@
            <div class="form-group">
             <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
             <div class="col-sm-10">
-              <select name="payment_yapayc_status" id="input-status" class="form-control">
-                {% if payment_yapayc_status %}
+              <select name="payment_vindicartao_status" id="input-status" class="form-control">
+                {% if payment_vindicartao_status %}
                 <option value="1" selected="selected">{{ text_enabled }}</option>
                 <option value="0">{{ text_disabled }}</option>
                 {% else %}
@@ -290,7 +290,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
             <div class="col-sm-10">
-              <input type="text" name="payment_yapayc_sort_order" value="{{ payment_yapayc_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control" />
+              <input type="text" name="payment_vindicartao_sort_order" value="{{ payment_vindicartao_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control" />
             </div>
           </div>
 		</div>
