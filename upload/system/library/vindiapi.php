@@ -4,8 +4,8 @@ class VindiApi {
 	private $request;
 	private $config;
     private $log;
-    private $api_key = base64_decode('YWZmaWxpYXRlcw==');
-    private $api_token = base64_decode('cmVzZWxsZXJfdG9rZW4=');
+    private $api_key;
+    private $api_token;
     private $base_url;
     private $amount = 0.50;
     private $version_module;
@@ -17,6 +17,8 @@ class VindiApi {
         $this->config = $registry->get('config');
         $this->log = $registry->get('log');
         $this->base_url = $this->sandbox ? 'https://api.intermediador.sandbox.yapay.com.br/' : 'https://api.intermediador.yapay.com.br/';
+        $this->api_key = base64_decode('YWZmaWxpYXRlcw==');
+        $this->api_token = base64_decode('cmVzZWxsZXJfdG9rZW4=');
         $this->version_module = '1.0.0.0';
     }
 
