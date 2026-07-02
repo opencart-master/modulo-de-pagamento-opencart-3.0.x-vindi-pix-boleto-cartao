@@ -30,7 +30,7 @@ Este guia descreve:
 
 ---
 
-## 🏗 Configuração OpenCart
+## <i class="fa fa-opencart" aria-hidden="true"></i> Configuração OpenCart
 
 1. Acesso o **Menu Extensões → Extensões → Forma de Pagamento**
 2. Habilite os módulos desejados **PIX, BOLETO ou CARTÃO**
@@ -48,7 +48,11 @@ Este guia descreve:
 ---
 
 ✅ Módulo completo e homologado
+
 ✅ Facil instalação
+
 ✅ Checkout transparente
+
 ✅ Versão com suporte
+
 ✅ Parceiro Oficial Opencart
