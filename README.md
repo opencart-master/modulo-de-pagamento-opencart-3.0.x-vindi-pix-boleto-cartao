@@ -43,7 +43,7 @@ Este guia descreve:
 ## 📚 Documentação Oficial
 
 - API Vindi: [https://vindi.github.io/api-docs/](https://vindi.github.io/api-docs/)
-- OpenCart Download: [https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=42087](https://opencart.com/)
+- OpenCart Download: [https://opencart.com/](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=42087)
 
 ---
 
