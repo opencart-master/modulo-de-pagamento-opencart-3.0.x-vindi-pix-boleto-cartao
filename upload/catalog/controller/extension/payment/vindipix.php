@@ -113,9 +113,12 @@ class ControllerExtensionPaymentVindipix extends Controller {
             $comment  = "Situação: " . $resposta['data_response']['transaction']['status_name'] . "\n";
 		    $comment .= "ID: " . $resposta['data_response']['transaction']['transaction_id'] . "\n";
 		    $comment .= "Link do QRCODE: <a href='" . $resposta['data_response']['transaction']['payment']['url_payment'] . "' class='label label-info' target='_blank'> VER Pix </a> \n";
-		    $comment .= "QRCODE: <br> <iframe src='" . $resposta['data_response']['transaction']['payment']['qrcode_path'] . "' title='Pix' border='0' frameborder='0' allowtransparency='true'></iframe><br><br>";
-			$comment .= "PIX Copia e Cola: <br>" . $resposta['data_response']['transaction']['payment']['qrcode_original_path'] . " ";
-            $comment .= "<br><input type='text' name='input-pix' id='input-pix' value='" . $resposta['data_response']['transaction']['payment']['qrcode_original_path'] . "' />";
+		    $comment .= "QRCODE: <br> <iframe src='" . $resposta['data_response']['transaction']['payment']['qrcode_path'] . "' title='Pix' border='0' frameborder='0' allowtransparency='true'></iframe><br>";
+			$comment .= "<br>PIX Copia e Cola:
+			<div class='form-group col-sm-10 col-md-6'><div class='input-group'>
+			<input type='text' name='input-copia' id='input-copia' value='" . $resposta['data_response']['transaction']['payment']['qrcode_original_path'] . "' class='form-control' />
+			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br>
+			";
 			$json['success'] = "Success";
 			$json['continue'] = $this->url->link('checkout/success');
             $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_vindipix_order_status_id'), $comment, $notify = true);
