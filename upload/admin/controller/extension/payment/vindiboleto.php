@@ -164,7 +164,7 @@ class ControllerExtensionPaymentVindiboleto extends Controller {
 		} elseif($this->config->has('payment_vindiboleto_total')) {
 			$data['payment_vindiboleto_total'] = $this->config->get('payment_vindiboleto_total');
 		} else {
-			$data['payment_vindiboleto_total'] = 3.00;
+			$data['payment_vindiboleto_total'] = 5.00;
 		}
 
 		if (isset($this->request->post['payment_vindiboleto_order_status_id'])) {

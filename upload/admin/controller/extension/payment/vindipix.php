@@ -164,7 +164,7 @@ class ControllerExtensionPaymentvindipix extends Controller {
 		} elseif($this->config->has('payment_vindipix_total')) {
 			$data['payment_vindipix_total'] = $this->config->get('payment_vindipix_total');
 		} else {
-			$data['payment_vindipix_total'] = 3.00;
+			$data['payment_vindipix_total'] = 5.00;
 		}
 
 		if (isset($this->request->post['payment_vindipix_order_status_id'])) {
