@@ -113,8 +113,11 @@ class ControllerExtensionPaymentVindiboleto extends Controller {
 			$comment  = "Situação: " . $resposta['data_response']['transaction']['status_name'] . "\n";
 			$comment .= "ID: " . $resposta['data_response']['transaction']['transaction_id'] . "\n";
 			$comment .= "Link do Boleto: <a href='" . $resposta['data_response']['transaction']['payment']['url_payment'] . "' class='label label-info' target='_blank'> VER BOLETO </a> \n\n";
-			$comment .= "LINHA DIGITÁVEL: <br>"	. preg_replace("/[^0-9]/", "", $resposta['data_response']['transaction']['payment']['linha_digitavel']);
-			$comment .= "<br><input type='text' name='input-bol' id='input-bol' value='" . preg_replace("/[^0-9]/", "", $resposta['data_response']['transaction']['payment']['linha_digitavel']) . "' />";
+			$comment .= "LINHA DIGITÁVEL::
+			<div class='form-group col-sm-10 col-md-6'><div class='input-group'>
+			<input type='text' name='input-copia' id='input-copia' value='" . preg_replace("/[^0-9]/", "", $resposta['data_response']['transaction']['payment']['linha_digitavel']) . "' class='form-control' />
+			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br>
+			";
 			$json['success'] = "Success";
 			$json['continue'] = $this->url->link('checkout/success');
 			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_vindiboleto_order_status_id'), $comment, $notify = true);
