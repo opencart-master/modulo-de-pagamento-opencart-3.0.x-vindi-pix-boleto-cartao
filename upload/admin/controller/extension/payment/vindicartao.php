@@ -63,6 +63,7 @@ class ControllerExtensionPaymentVindicartao extends Controller {
 
 		$data['atual'] = $this->vindi->checkUpdate();
 		$data['version'] = $this->vindi->moduleVersion();
+		$this->vindi->check();
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
