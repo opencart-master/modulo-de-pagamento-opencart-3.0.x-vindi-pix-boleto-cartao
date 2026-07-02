@@ -32,11 +32,11 @@ Este guia descreve:
 
 ## 🏗 Configuração OpenCart
 
-Acesso o **Menu Extensões → Extensões → Forma de Pagamento**
-Habilite os módulos desejados **PIX, BOLETO ou CARTÃO**
-Editar o módulo após habilitado
-Realize as configurações incluíndo o token da Vindi.
-Salvar as configurações
+1. Acesso o **Menu Extensões → Extensões → Forma de Pagamento**
+2. Habilite os módulos desejados **PIX, BOLETO ou CARTÃO**
+3. Editar o módulo após habilitado
+4. Realize as configurações incluíndo o token da Vindi.
+5. Salvar as configurações
 
 ---
 
