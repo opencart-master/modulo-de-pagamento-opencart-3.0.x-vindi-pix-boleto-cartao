@@ -58,7 +58,7 @@ class ControllerExtensionPaymentVindicartao extends Controller {
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 		
-		$data['murl'] = 'https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=42088';
+		$data['murl'] = 'https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=42087';
 		$data['module_name'] = "Vindi Pagamentos";
 
 		$data['atual'] = $this->vindi->checkUpdate();
