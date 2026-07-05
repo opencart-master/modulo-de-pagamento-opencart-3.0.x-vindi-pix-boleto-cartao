@@ -95,12 +95,21 @@ class ControllerExtensionPaymentVindicartao extends Controller {
 			'text'  => 'Selecione o Mês',
 			'value' => ''
 		);
+		
+		$formatter = new IntlDateFormatter(
+        'pt_BR',
+        IntlDateFormatter::NONE,
+        IntlDateFormatter::NONE,
+        null,
+        null,
+        'MMMM'
+        );
        
 		for ($i = 1; $i <= 12; $i++) {
 		    setlocale(LC_TIME, 'pt_BR.utf-8');
 			$data['months'][] = array(
-				'text'  => ucwords(strftime('%B', mktime(0, 0, 0, $i, 1, 2000))),
-				'value' => sprintf('%02d', $i)
+            'text'  => ucfirst($formatter->format(mktime(0, 0, 0, $i, 1))),
+            'value' => sprintf('%02d', $i)
 			);
 		}
 
@@ -115,8 +124,8 @@ class ControllerExtensionPaymentVindicartao extends Controller {
 
 		for ($i = $today['year']; $i < $today['year'] + 12; $i++) {
 			$data['year_valids'][] = array(
-				'text'  => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)),
-				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i))
+				'text'  => (string)$i,
+                'value' => (string)$i
 			);
 		}
 		
@@ -302,7 +311,7 @@ class ControllerExtensionPaymentVindicartao extends Controller {
 		$val["finger_print"] = $finger_print;
 		
 		if (!isset($json['error'])){
-		$resposta = $this->getPay($json_convert);
+		$resposta = $this->getPay($val);
 			
 		if ($this->vindi->sandbox()) {
 				$this->log->write('DEV PAYLOAD' . json_encode($val));

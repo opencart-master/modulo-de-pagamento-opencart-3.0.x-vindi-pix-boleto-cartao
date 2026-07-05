@@ -116,7 +116,7 @@ class ControllerExtensionPaymentVindiboleto extends Controller {
 			$comment .= "LINHA DIGITÁVEL::
 			<div class='form-group col-sm-10 col-md-6'><div class='input-group'>
 			<input type='text' name='input-copia' id='input-copia' value='" . preg_replace("/[^0-9]/", "", $resposta['data_response']['transaction']['payment']['linha_digitavel']) . "' class='form-control' />
-			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br>
+			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br><br>
 			";
 			$json['success'] = "Success";
 			$json['continue'] = $this->url->link('checkout/success');

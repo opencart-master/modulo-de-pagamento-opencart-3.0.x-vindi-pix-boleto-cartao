@@ -117,7 +117,7 @@ class ControllerExtensionPaymentVindipix extends Controller {
 			$comment .= "<br>PIX Copia e Cola:
 			<div class='form-group col-sm-10 col-md-6'><div class='input-group'>
 			<input type='text' name='input-copia' id='input-copia' value='" . $resposta['data_response']['transaction']['payment']['qrcode_original_path'] . "' class='form-control' />
-			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br>
+			<span class='input-group-btn'><input type='button' value='Copiar' id='button-copiar' data-loading-text='Copiando'  class='btn btn-primary' /></span></div></div><br><br>
 			";
 			$json['success'] = "Success";
 			$json['continue'] = $this->url->link('checkout/success');
